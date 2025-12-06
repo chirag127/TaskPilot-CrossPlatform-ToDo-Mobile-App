@@ -1,94 +1,87 @@
-# ⚡ Contributing to TaskPilot: The High-Velocity Mobile App
+# 🤝 Contributing to TaskFlow-Mobile-Todo-App
 
-Thank you for considering contributing to TaskPilot! This project is governed by the principles of Zero-Defect, High-Velocity, and Future-Proof architecture enforced by the Apex Technical Authority. Your contributions help maintain our 2026 professional standard.
+As the Apex Technical Authority, we mandate that all contributions adhere to the highest standards of code quality, architectural integrity, and future-proofing. This repository follows a strict contribution workflow to ensure **Zero-Defect, High-Velocity** development.
 
-Please ensure you read and adhere to our [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting any contribution.
+## 1. Core Principles
 
-## 1. Development Environment Setup
+Before contributing, internalize the following architectural mandates:
 
-TaskPilot is built on the modern React Native ecosystem using Expo. We require a robust local setup to ensure cross-platform consistency.
+*   **SOLID Compliance:** All new components, modules, or logic must demonstrably adhere to SOLID principles.
+*   **DRY Enforcement:** Duplication is an immediate refactoring trigger.
+*   **YAGNI Adherence:** Implement only what is currently required. Avoid premature abstraction unless clearly necessitated by future projections (e.g., explicit platform branching).
+*   **TypeScript Strictness (If applicable):** If modifying the TypeScript/JavaScript core, enforce maximum type safety.
 
-### Prerequisites
+## 2. Development Environment Setup
 
-You must have the following installed:
-1.  **Node.js (LTS):** Version 18+ or 20+.
-2.  **Expo CLI:** Install globally (`npm install -g expo-cli`) or use `npx`.
-3.  **Dependency Manager:** We use `npm` for consistent dependency management.
+Ensure your local environment mirrors the CI/CD pipeline for maximum fidelity.
 
-### Getting Started
+1.  **Fork the Repository:** Create your own fork of `chirag127/TaskFlow-Mobile-Todo-App`.
+2.  **Clone Your Fork:**
+    bash
+    git clone https://github.com/YOUR_USERNAME/TaskFlow-Mobile-Todo-App.git
+    cd TaskFlow-Mobile-Todo-App
+    
+3.  **Install Dependencies (Expo/React Native Standard):**
+    bash
+    # Using npm/yarn based on project preference, assume npm for standardization
+    npm install
+    # Ensure Expo CLI is globally available or use npx
+    npx expo doctor -c
+    
+4.  **Create a Feature Branch:** Name it descriptively, prefixing with `feat/`, `fix/`, or `refactor/`.
+    bash
+    git checkout -b feat/new-notification-service
+    
 
-bash
-# 1. Clone the repository
-git clone https://github.com/chirag127/TaskPilot-CrossPlatform-ToDo-Mobile-App.git
-cd TaskPilot-CrossPlatform-ToDo-Mobile-App
+## 3. Contribution Workflow
 
-# 2. Install dependencies
-npm install
+All contributions must follow this mandatory sequence:
 
-# 3. Start the Expo development server
-npm start
+### A. Local Verification
 
+Ensure all local checks pass before committing.
 
-## 2. Contribution Workflow (The Apex Standard)
+1.  **Linting & Formatting:** Use Biome (if adopted) or standard ESLint/Prettier to ensure style parity.
+    bash
+    npm run lint
+    npm run format
+    
+2.  **Unit Testing:** Run relevant unit tests using Vitest.
+    bash
+    npm run test:unit
+    
+3.  **Build Check:** Ensure the application compiles without warnings/errors on the target platform (iOS/Android).
+    bash
+    npm run build:dev
+    
 
-We follow the standard Git Flow with a focus on atomic commits and high-quality Pull Requests (PRs). All changes must be made in a dedicated, descriptive branch.
+### B. Commit Guidelines
 
-1.  **Fork** the repository.
-2.  **Clone** your fork.
-3.  Create a descriptive **feature branch**: `git checkout -b feat/my-new-feature` or `fix/issue-description`.
-4.  Make your changes, ensuring 100% adherence to all linting, formatting, and testing standards (see Section 3).
-5.  **Commit** using [Conventional Commits](#4-commit-message-guidelines).
-6.  Push your changes: `git push origin feat/my-new-feature`.
-7.  Open a **Pull Request** against the `main` branch of the upstream repository. Ensure you fill out our provided [Pull Request Template](./PULL_REQUEST_TEMPLATE.md).
+Use the **Conventional Commits** specification for all commits. This fuels automated changelog generation.
 
-## 3. Style, Linting, and Quality Assurance
+**Format:** `<type>(<scope>): <subject>`
 
-We enforce strict code quality using **ESLint** and **Prettier** to ensure uniformity across the JavaScript and React components.
+*   **Examples:**
+    *   `feat(storage): Implement async/await wrapper for AsyncStorage persistence`
+    *   `fix(ui): Correct alignment issue on TaskItem component for Android devices`
+    *   `refactor(state): Migrate component state to global Context API using Signals approach`
 
-*   **Zero Lint Warnings:** PRs must pass all CI checks, including static analysis and linting, without warnings or errors. Failure to pass linting locally means the CI pipeline will fail.
-*   **Formatting:** Code must be automatically formatted before committing.
+### C. Pull Request Submission
 
-### Standard Quality Commands
+1.  **Push to Fork:** Push your feature branch to your fork.
+    bash
+    git push origin feat/your-feature-name
+    
+2.  **Open PR:** Open a Pull Request targeting `chirag127:main`.
+3.  **Use Template:** Fill out the mandatory **Pull Request Template** (`.github/PULL_REQUEST_TEMPLATE.md`). Do not skip any sections.
+4.  **Verification:** Allow the GitHub Actions CI pipeline (`.github/workflows/ci.yml`) to run successfully. PRs failing CI will be automatically rejected by reviewers.
 
-| Command | Purpose |
-| :--- | :--- |
-| `npm run lint` | Runs the code linter (ESLint). |
-| `npm run format` | Automatically fixes code formatting issues (Prettier). |
-| `npm run check` | Runs both linting and type checks. |
+## 4. Reporting Issues
 
-## 4. Testing and Verification
+If you discover a bug or wish to propose a feature, utilize the provided issue templates in the `.github/ISSUE_TEMPLATE/` directory. Be specific, provide reproduction steps, and adhere to the principles outlined in `.github/SECURITY.md` when reporting vulnerabilities.
 
-All new features and bug fixes **must** be accompanied by relevant unit tests. We use **Jest** for robust component and utility testing.
+--- 
 
-*   **Test Coverage:** Aim for high coverage on all new logical paths (e.g., utility functions, state management changes).
-*   **Verification:** Ensure all existing tests pass before submission.
+*By contributing to this repository, you agree to license your contributions under the terms specified in the `LICENSE` file (CC BY-NC 4.0).* 
 
-bash
-# Run all unit tests
-npm run test
-
-# Run tests in watch mode
-npm run test:watch
-
-
-## 5. Commit Message Guidelines
-
-We utilize the **Conventional Commits** specification to enable automated version bumping and streamlined change tracking (following SEMVER). 
-
-Format: `<type>(<scope>): <description>`
-
-### Types Supported
-
-| Type | Description | Resulting SEMVER Change |
-| :--- | :--- | :--- |
-| `feat` | A new feature implementation. | Minor |
-| `fix` | A bug fix (patches existing code). | Patch |
-| `docs` | Documentation only changes. | None |
-| `style` | Formatting, whitespace, or similar non-functional changes. | None |
-| `refactor`| Code change that neither fixes a bug nor adds a feature. | None |
-| `perf` | A code change that improves performance. | None |
-| `test` | Adding missing tests or correcting existing tests. | None |
-| `ci` | Changes to our CI configuration files and scripts. | None |
-| `build` | Changes that affect the build system or external dependencies (e.g., package updates). | None |
-
-**Example:** `feat(storage): implement secure async storage for task persistence`
+For deeper guidance on architectural enforcement and automated tooling verification, consult the **AGENTS.md** file.
